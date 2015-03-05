@@ -22,12 +22,16 @@ window.Shortly = Backbone.View.extend({
   },
 
   renderIndexView: function(e){
-    e && e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
     this.router.navigate('/', { trigger: true });
   },
 
   renderCreateView: function(e){
-    e && e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
     this.router.navigate('/create', { trigger: true });
   },
 
