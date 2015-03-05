@@ -3,6 +3,23 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      //put style sheets and js files here
+      main : {
+        src: ['public/client/**/*.js'],
+        // src: ['public/client/app.js', 'public/client/router.js',
+        //       'public/client/linksView.js'],
+        dest: 'public/dist/main.js'
+      },
+      lib : {
+        // src: ['public/lib/**/*.js'],
+        src: ['public/lib/jquery.js', 'public/lib/underscore.js',
+              'public/lib/backbone.js', 'public/lib/handlebars.js'],
+        dest: 'public/dist/lib.js'
+      },
+      // combo: {
+      //   src: ['public/lib/**/*.js', 'public/client/**/*.js'],
+      //   dest: 'public/dist/everything.js'
+      // },
     },
 
     mochaTest: {
@@ -21,23 +38,37 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      main: {
+        files: {
+          'public/dist/main.min.js' : ['public/dist/main.js']
+        }
+      },
+      lib: {
+        files: {
+          'public/dist/lib.min.js' : ['public/dist/lib.js']
+        }
+      },
     },
 
     jshint: {
       files: [
         // Add filespec list here
+        'public/dist/lib.min.js',
+        'public/dist/main.min.js'
       ],
       options: {
         force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
-          'public/dist/**/*.js'
+          // 'public/dist/**/*.js'
         ]
       }
     },
 
     cssmin: {
+        src: 'public/client/style.css',
+        dest: 'public/dist/style-min.css'
     },
 
     watch: {
