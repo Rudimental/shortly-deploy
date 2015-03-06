@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //conncect to database or connect to local database
-mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/shortlydb';
+mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/shortlydb';
 //connect mongoose to the URI.
 mongoose.connect(mongoURI);
 
