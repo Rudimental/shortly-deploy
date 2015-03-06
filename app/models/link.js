@@ -1,14 +1,14 @@
 var db = require('../config');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var linkSchema = new Schema ({
+var linkSchema = mongoose.Schema ({
   url: String,
   base_url: String,
   code: String,
   title: String,
-  visits: Number,
+  visits: Number
   // date: {type: Date, default: Date.now }
 });
 
